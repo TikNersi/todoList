@@ -1,16 +1,17 @@
-import "./App.css";
-import { TodoState } from "./Context/Context";
-import SearchBar from "./SearchBar";
 import TodoList from "./TodoList";
+import SearchBar from "./SearchBar";
+import { TodoContextProvider } from "./Store/context";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <TodoState>
+    <TodoContextProvider>
+      <div className="App">
         <SearchBar />
         <TodoList />
-      </TodoState>
-    </div>
+      </div>
+    </TodoContextProvider>
   );
 }
 

@@ -1,36 +1,36 @@
 import { FC, useState } from "react";
-
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+
+import { useTodosDispatch } from "../../Store/context";
+import { deleteTodo, editTodo } from "../../Store/actions";
+
 import * as styles from "./styles";
 
 interface TodoTypes {
-  editTodo: any;
-  deleteTodo: any;
   id: any;
-  incomingdescription: any;
-  incomingtitle: any;
+  title?: any;
+  description?: any;
 }
 
 const Todo: FC<TodoTypes> = ({
-  deleteTodo,
-  editTodo,
   id,
-  incomingdescription,
-  incomingtitle,
+  title: initialTitle = "",
+  description: initialDescription = "",
 }) => {
-  const [title, setTitle]: any = useState(incomingtitle ?? "");
-  const [description, setDescription]: any = useState(
-    incomingdescription ?? ""
-  );
+  const todosDispatch = useTodosDispatch();
+  const [title, setTitle]: any = useState(initialTitle);
+  const [description, setDescription]: any = useState(initialDescription);
   const [isEditing, setIsEditing] = useState(false);
 
   const onDelete = () => {
-    deleteTodo(id);
+    todosDispatch(deleteTodo(id));
   };
+
   const onConfirm = () => {
-    editTodo({ title, description, id });
+    todosDispatch(editTodo({ title, description, id }));
     setIsEditing(false);
   };
+
   return (
     <styles.Todo tabIndex={1}>
       <form className="form" onSubmit={(e) => e.preventDefault()}>
@@ -77,16 +77,16 @@ const Todo: FC<TodoTypes> = ({
                 className="cancel-button"
                 type="reset"
                 onClick={() => {
-                  setDescription(incomingdescription);
-                  setTitle(incomingtitle);
+                  setDescription(initialDescription);
+                  setTitle(initialTitle);
                   setIsEditing(false);
                 }}
               >
                 Cancel
               </button>
               <button
-                className="confirm-button"
                 type="submit"
+                className="confirm-button"
                 onClick={onConfirm}
               >
                 Confirm

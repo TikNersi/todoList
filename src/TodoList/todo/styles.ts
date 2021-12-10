@@ -5,13 +5,13 @@ export const Todo = styled.div`
   background-color: #878787;
   border-radius: 8px;
   cursor: default;
-  &:focus{
-    background-color: #60a6bf;
 
+  &:focus {
+    background-color: #60a6bf;
   }
-  &:hover{
-    background-color: #60a6bf;
 
+  &:hover {
+    background-color: #60a6bf;
   }
 
   .container {

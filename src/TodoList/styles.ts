@@ -16,9 +16,11 @@ export const Container = styled.div`
     padding: 16px;
     gap: 8px;
   }
- 
-    .uncomplete-todos,.pending,.complete {
-        gap: 4px;
+
+  .uncomplete-todos,
+  .pending,
+  .complete {
+    gap: 4px;
     list-style: none;
     margin-block-start: auto;
     padding-inline-start: 0px;
@@ -26,26 +28,31 @@ export const Container = styled.div`
     display: flex;
     height: 100%;
     flex-direction: column;
-    }
-    .container {
-      width: 100%;
-      height: 100%;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
     gap: 8px;
     display: flex;
+
     .uncomplete-todos {
-    padding: 16px;
-  }
+      padding: 16px;
     }
+  }
+
   .pending {
   }
 
   .complete {
   }
 `;
+
 export const Button = styled.div`
   display: flex;
   margin-top: 8px;
   justify-content: center;
+
   button {
     color: #fff !important;
     text-transform: uppercase;

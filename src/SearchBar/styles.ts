@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Search = styled.div`
-
   input {
     height: 16px;
     padding: 8px 8px 8px 20px;

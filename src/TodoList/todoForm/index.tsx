@@ -1,21 +1,32 @@
 import { FC, useState } from "react";
+
+import { addTodo } from "../../Store/actions";
+import { useTodosDispatch } from "../../Store/context";
+
 import * as styles from "./styles";
 
 interface TodoTypes {
   onCancel: any;
-  addTodo: any;
 }
 
-const TodoForm: FC<TodoTypes> = ({ onCancel, addTodo }) => {
-  const [title, setTitle]: any = useState("");
-  const [description, setDescription]: any = useState("");
+const TodoForm: FC<TodoTypes> = ({ onCancel }) => {
+  const todosDispatch = useTodosDispatch();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
-  const generateD = Math.ceil(Math.random() * 100);
 
   const addingTodo = () => {
-    addTodo({ title, description, isCompleted, id: generateD });
+    todosDispatch(
+      addTodo({
+        title,
+        description,
+        isCompleted,
+        id: Date.now(),
+      })
+    );
     onCancel();
   };
+
   return (
     <styles.TodoForm>
       <form className="form" onSubmit={(e) => e.preventDefault()}>

@@ -16,8 +16,8 @@ export const Modal = styled.div`
     right: 20px;
     position: absolute;
   }
-  
 `;
+
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
